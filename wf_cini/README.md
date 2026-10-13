@@ -51,14 +51,14 @@ O sistema resolve a necessidade de:
 | Banco | Biblioteca | Uso |
 |---|---|---|
 | SQL Server (`wf`) | `mssql` | Dados de workflow e processos |
-| SQL Server (`p11_prod`) | `mssql` | Dados do ERP Protheus |
+| SQL Server (`p2510`) | `mssql` | Dados do ERP Protheus |
 | MySQL (`totvsbi`) | `mysql2` | Dados de BI (Business Intelligence) |
 
 ## 🗄️ Banco de Dados
 
 - **SQL Server** (biblioteca `mssql`):
   - `wf` — Banco principal de workflow (definições de processos, etapas, execuções)
-  - `p11_prod` — Protheus ERP (dados auxiliares)
+  - `p2510` — Protheus ERP (dados auxiliares)
 - **MySQL** (biblioteca `mysql2`):
   - `totvsbi` — TOTVS BI (consultas de Business Intelligence)
 
@@ -68,7 +68,7 @@ O sistema resolve a necessidade de:
 |---|---|---|
 | **Hub Cini** | SSO | Autenticação via Single Sign-On (recebe `sso_token` via query string) |
 | **PortalConsultasCini** | Recursos estáticos | Compartilha CSS, JavaScript e imagens (`/css`, `/js`, `/images`) |
-| **Protheus ERP** | Banco de dados | Consulta dados do ERP via banco `p11_prod` |
+| **Protheus ERP** | Banco de dados | Consulta dados do ERP via banco `p2510` |
 | **TOTVS BI** | Banco de dados | Consulta dados de BI via MySQL |
 
 ## ⚙️ Variáveis de Ambiente
@@ -84,7 +84,7 @@ DB_USER_ERP=seu_usuario
 DB_PASSWORD_ERP=sua_senha
 DB_SERVER_ERP=localhost
 DB_DATABASE_DW=wf
-DB_DATABASE_PROTHEUS=p11_prod
+DB_DATABASE_PROTHEUS=p2510
 
 # MySQL (BI)
 DB_DATABASE_BI=totvsbi
@@ -108,7 +108,7 @@ http://localhost:3008/docs
 
 ### Pré-requisitos
 - Node.js instalado
-- SQL Server com os bancos `wf` e `p11_prod` acessíveis
+- SQL Server com os bancos `wf` e `p2510` acessíveis
 - MySQL com o banco `totvsbi` acessível
 - Pasta `PortalConsultasCini` no mesmo diretório do projeto (para CSS/JS/imagens compartilhados)
 - PM2 (opcional, para produção)

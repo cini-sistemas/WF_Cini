@@ -1,7 +1,7 @@
 const db = require('../models/db');
 
-const rawDbName = process.env.DB_DATABASE_PROTHEUS || 'p11_prod';
-const protheusDbName = /^[A-Za-z0-9_]+$/.test(rawDbName) ? rawDbName : 'p11_prod';
+const rawDbName = process.env.DB_DATABASE_PROTHEUS || 'p2510';
+const protheusDbName = /^[A-Za-z0-9_]+$/.test(rawDbName) ? rawDbName : 'p2510';
 const sysUsrTable = `[${protheusDbName}].[dbo].[SYS_USR]`;
 
 function normalizeIdentifier(value) {
