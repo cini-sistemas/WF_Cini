@@ -16,6 +16,8 @@ const dbDw = require('./config/dbConfigDw');
 const { registerBpmModule } = require('./backend/app');
 
 const app = express();
+const f2b = require('./security/cini-fail2ban');
+app.use(f2b.guard('wf-cini', {loginPaths: ['/login']}));
 const PORT = process.env.PORT;
 const DEFAULT_AUTH_REDIRECT = '/processos';
 const PROTHEUS_AUTH_URL = process.env.PROTHEUS_AUTH_URL || 'https://consultas.cini.com.br:3032';
@@ -33,7 +35,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cookieParser());
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || 'change_this_secret',
+    secret: process.env.SESSION_SECRET || require('crypto').randomBytes(48).toString('hex'),
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 24 * 60 * 60 * 1000 },
